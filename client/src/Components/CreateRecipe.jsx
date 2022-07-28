@@ -33,7 +33,6 @@ export default function CreateRecipe() {
         })
     }
 
-    // SOLUCIONAR PASAR ID DE DIETA AL ARRAY O CAMBIAR EL POST PARA QUE RECIBA NAME
     function handleSelectDiet(event) {
         event.preventDefault()
         if (event.target.value !== "Diet") {

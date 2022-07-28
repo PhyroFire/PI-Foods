@@ -12,12 +12,12 @@ const postGameDb = async (name, summary, health_score, step_by_step, img, diets)
         myGame: true
     })
 
-    // let dietsInDB = await Diet.findAll({
-    //     where: {
-    //         name: diets
-    //     }, attributes: ['id']
-    // })
-    recipe.addDiet(diets)
+    let dietsInDB = await Diet.findAll({
+        where: {
+            name: diets
+        }, attributes: ['id']
+    })
+    recipe.addDiet(dietsInDB)
 
     return "Recipe created"
 }

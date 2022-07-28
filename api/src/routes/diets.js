@@ -8,16 +8,16 @@ const getAllDiets = async () => {
     const allDiets = await Diet.findAll()
     if (!allDiets.length) {
         const diets = [
-            "gluten free",
-            "dairy free",
-            "ketogenic",
-            "lacto ovo vegetarian",
-            "vegan",
-            "pescatarian",
-            "paleolithic",
-            "primal",
-            "fodmap friendly",
-            "whole 30"
+            "Gluten free",
+            "Dairy free",
+            "Ketogenic",
+            "Lacto ovo vegetarian",
+            "Vegan",
+            "Pescatarian",
+            "Paleolithic",
+            "Primal",
+            "Fodmap friendly",
+            "Whole 30"
         ]
         const postedDietsInDB = diets.map(diet => {
             return Diet.create({ name: diet })

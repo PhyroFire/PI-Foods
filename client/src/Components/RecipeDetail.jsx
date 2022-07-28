@@ -24,9 +24,8 @@ export default function Detail() {
             recipeId: recipe.id,
             dietId: event.target.value
         }
-
         dispatch(deleteDietFromRecipe(data))
-        navigate("/home");
+        navigate(`/home`);
     }
 
     function handleDeleteRecipe(event){
@@ -36,7 +35,6 @@ export default function Detail() {
     }
 
     var idStep = 1
-    console.log(recipe.diets)
 
     return (
         <div >
@@ -66,7 +64,7 @@ export default function Detail() {
                                     <button value={diet.id} onClick={(event) => { if (window.confirm(`Are you sure to delete ${diet.name} from diets?`)) handleDeleteDiet(event) }}>Delete Diet</button>
                                 </div>
                                 :
-                                <p>{diet}</p>
+                                <p key={diet}>{diet}</p>
                         )
                     })
                 }
