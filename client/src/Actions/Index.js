@@ -22,7 +22,7 @@ export function getRecipeById(id) {
 
 export function deleteDietFromRecipe(payload) {
     return function () {
-        axios.delete(`http://localhost:3001/diets`, {data: payload})
+        axios.delete(`http://localhost:3001/diets`, { data: payload })
     }
 }
 
@@ -55,5 +55,19 @@ export function getAllDiets() {
 export function postRecipe(payload) {
     return async function () {
         await axios.post(`http://localhost:3001/recipe`, payload)
+    }
+}
+
+export function filterMyRecipes(origen) {
+    return {
+        type: 'FILTER_MY_RECIPES',
+        payload: origen
+    }
+}
+
+export function getRecipesByDiet(diet) {
+    return {
+        type: 'GET_RECIPES_BY_DIET',
+        payload: diet
     }
 }

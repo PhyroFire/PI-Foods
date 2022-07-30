@@ -10,12 +10,12 @@ export default function CreateRecipe() {
     const navigate = useNavigate();
     const diets = useSelector(state => state.diets)
 
-
+    const [steps, setSteps] = useState("")
     const [input, setInput] = useState({
         name: "",
         summary: "",
         health_score: 0,
-        step_by_step : [],
+        step_by_step: steps,
         diets: [],
         img: "",
     })
@@ -55,35 +55,67 @@ export default function CreateRecipe() {
         })
     }
 
+    function handleStep(event) {
+        event.preventDefault()
+        setSteps(
+            event.target.value
+        )
+    }
+
+    function addStep(event) {
+        event.preventDefault()
+        if (steps !== "") {
+            setInput({
+                ...input,
+                step_by_step: [...input.step_by_step, steps]
+            })
+        }
+        setSteps("")
+    }
+
+    function deleteStep(event) {
+        event.preventDefault()
+        let arrayFiltrado = input.step_by_step.filter(paso => paso !== event.target.value)
+        setInput({
+            ...input,
+            step_by_step: arrayFiltrado
+        })
+    }
+
     function handleSubmit(event) {
         event.preventDefault()
 
         if (input.name === "") {
             return alert("Recipe NAME required")
         }
-        else if (input.summary === null) {
+        else if (input.summary === "") {
             return alert("Recipe SUMMARY required")
         }
         else if (input.health_score === 0) {
             return alert("Recipe SCORE required")
         }
-        else if (input.step_by_step === []) {
+        else if (input.step_by_step === steps) {
             return alert("Recipe STEPS required")
         }
-        else if (input.diets === []) {
+        else if (input.diets.length === 0) {
             return alert("Recipes must belong to a DIET type")
         }
-        dispatch(postRecipe(input))
-        alert("Recipe created!")
-        setInput({
-            name: "",
-            summary: "",
-            health_score: 0,
-            step_by_step : [],
-            diets: [],
-            img: "",
-        })
-        navigate("/home");
+        else if (input.img === "") {
+            return alert("Recipe IMAGE required")
+        }
+        else {
+            dispatch(postRecipe(input))
+            alert("Recipe created!")
+            setInput({
+                name: "",
+                summary: "",
+                health_score: 0,
+                step_by_step: steps,
+                diets: [],
+                img: "",
+            })
+            navigate("/home");
+        }
     }
 
     return (
@@ -102,10 +134,10 @@ export default function CreateRecipe() {
                         onChange={(event) => handleInput(event)}
                     />
                     {/* {
-                        input.name ?         
-                                <p></p>             
-                            :            
-                                <p>"Debe ingresar un name"</p>
+                        input.name && input.name !== "" ?
+                            <></>
+                            :
+                            <p>Must have a name</p>
                     } */}
                 </div>
 
@@ -165,6 +197,27 @@ export default function CreateRecipe() {
                             })
                         }
                     </ul>
+                </div>
+
+                <div>
+                    <label>Steps for recipe:</label>
+                    <input
+                        type='text'
+                        size="40"
+                        name='paso'
+                        placeholder="Step..."
+                        onChange={(event) => handleStep(event)} />
+                    <button onClick={(event) => addStep(event)}>Add step</button>
+                    {
+                        input.step_by_step && input.step_by_step.map(paso => {
+                            return (
+                                <div key={paso}>
+                                    <li>{paso}</li>
+                                    <button value={paso} onClick={(event) => deleteStep(event)}>Delete step</button>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
 
                 <button id="submit" type="submit">Create Recipe</button>

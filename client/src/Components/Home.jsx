@@ -7,6 +7,8 @@ import React from "react";
 import Paginado from "./Paginado.jsx";
 import Recipes from "./Recipes.jsx";
 import SearchBar from "./SearchBar.jsx";
+import FilterOrigin from "./FilterOrigen.jsx";
+import FilterDiet from "./FilterDiet.jsx";
 
 export default function Home() {
 
@@ -41,6 +43,13 @@ export default function Home() {
                 <Link to='/'><button>Back to start</button></Link>
 
                 <Link to={'/createRecipe'}><button>CREATE RECIPE!</button></Link>
+
+            </nav>
+
+            <nav className="Nav_Home">
+
+                <FilterOrigin />
+                <FilterDiet />
 
             </nav>
 
