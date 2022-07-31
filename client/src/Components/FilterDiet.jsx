@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getRecipesByDiet, getAllDiets } from "../Actions/Index";
 
-export default function FilterDiet() {
+export default function FilterDiet({pages}) {
 
     const dispatch = useDispatch()
     const allDiets = useSelector(state => state.diets)
@@ -14,6 +14,7 @@ export default function FilterDiet() {
 
     function handleDietFilter(event) {
         dispatch(getRecipesByDiet(event.target.value))
+        pages(1)
     }
 
     return (

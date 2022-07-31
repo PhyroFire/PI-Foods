@@ -19,6 +19,11 @@ export default function SearchBar() {
         setName("")
     }
 
+    function handleReset() {
+        dispatch( getRecipeByName(name))
+        setName("")
+    }
+
     return (
         <div>
             <form onSubmit={(event) => handleSubmit(event)}>
@@ -30,6 +35,8 @@ export default function SearchBar() {
                 />
                 <button type="submit" >Search</button>
             </form>
+
+            <button onClick={ () => handleReset() }>RESET</button>
         </div>
     )
 

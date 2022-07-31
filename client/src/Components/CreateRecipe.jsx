@@ -10,7 +10,8 @@ export default function CreateRecipe() {
     const navigate = useNavigate();
     const diets = useSelector(state => state.diets)
 
-    const [steps, setSteps] = useState("")
+    const [steps, setSteps] = useState("") // STRING QUE SE MODIFICA CON EL INPUT STEP PARA SER AGREGADO AL ESTADO "INPUT" AL APRETAR BUTON ADDSTEP
+
     const [input, setInput] = useState({
         name: "",
         summary: "",
@@ -70,6 +71,7 @@ export default function CreateRecipe() {
                 step_by_step: [...input.step_by_step, steps]
             })
         }
+        document.getElementById("STEP").value = ""
         setSteps("")
     }
 
@@ -202,6 +204,7 @@ export default function CreateRecipe() {
                 <div>
                     <label>Steps for recipe:</label>
                     <input
+                        id="STEP"
                         type='text'
                         size="40"
                         name='paso'

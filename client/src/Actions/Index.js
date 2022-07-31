@@ -71,3 +71,18 @@ export function getRecipesByDiet(diet) {
         payload: diet
     }
 }
+
+export function orderByName(order){
+    return {
+        type: 'ORDER_BY_NAME',
+        payload : order
+    }
+}
+
+
+export function orderByScore(order){
+    return {
+        type: 'ORDER_BY_SCORE',
+        payload : order
+    }
+}

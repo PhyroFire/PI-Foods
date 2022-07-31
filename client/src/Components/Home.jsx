@@ -9,6 +9,8 @@ import Recipes from "./Recipes.jsx";
 import SearchBar from "./SearchBar.jsx";
 import FilterOrigin from "./FilterOrigen.jsx";
 import FilterDiet from "./FilterDiet.jsx";
+import FilterName from "./FilterName.jsx";
+import FilterScore from "./FilterScore.jsx";
 
 export default function Home() {
 
@@ -20,11 +22,14 @@ export default function Home() {
     const indexOfLastRecipe = currentPage * recipesXPage
     const indexOfFirstRecipe = indexOfLastRecipe - recipesXPage
     const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe)
+    
+    const [orden, setOrden] = useState ("") // ESTADO QUE SOLO SE USA PARA VOLVER A RENDERIZAR EL HOME AL IMPLEMENTAR ORDENAMIENTOS QUE NO MODIFIQUEN EL LENGTH DE RECIPES
 
     useEffect(() => {
-        dispatch(getAllRecipes())
+        if (!recipes.length){
+            dispatch(getAllRecipes())
+        }
     }, [])
-
 
     return (
         <div className="Home">
@@ -32,7 +37,6 @@ export default function Home() {
             <div className="TOP">
                 <h1>Henry's Foods Proyect</h1>
             </div>
-
 
             <nav className="MainNav">
 
@@ -48,8 +52,13 @@ export default function Home() {
 
             <nav className="Nav_Home">
 
-                <FilterOrigin />
-                <FilterDiet />
+                <FilterOrigin pages={setCurrentPage}/>
+
+                <FilterDiet pages={setCurrentPage}/>
+
+                <FilterName pages={setCurrentPage} orden={setOrden}/>
+
+                <FilterScore pages={setCurrentPage} orden={setOrden}/>
 
             </nav>
 
