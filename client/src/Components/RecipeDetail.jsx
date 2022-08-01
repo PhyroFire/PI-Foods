@@ -33,7 +33,7 @@ export default function Detail() {
         dispatch(deleteRecipe(recipe.id))
         navigate("/home");
     }
-
+    
     return (
         <div >
 

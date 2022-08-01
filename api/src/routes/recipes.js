@@ -14,7 +14,7 @@ const getRecipesApi = async () => {
             //summary: recipe.summary,
             health_score: recipe.healthScore,
             //step_by_step: recipe.analyzedInstructions[0] ? recipe.analyzedInstructions[0].steps.map(step => step.step) : ["No steps"],
-            image: recipe.image,
+            img: recipe.image,
             diets: recipe.diets,
         }
     })
@@ -74,7 +74,7 @@ router.get('/:id', async (req, res, next) => {
                 summary: recipeInApi.data.summary,
                 health_score: recipeInApi.data.healthScore,
                 step_by_step: recipeInApi.data.analyzedInstructions[0] ? recipeInApi.data.analyzedInstructions[0].steps.map(step => step.step) : ["No steps"],
-                image: recipeInApi.data.image,
+                img: recipeInApi.data.image,
                 diets: recipeInApi.data.diets,
             }
             res.json(recipe)
