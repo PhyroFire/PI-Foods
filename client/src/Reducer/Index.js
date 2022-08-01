@@ -66,18 +66,10 @@ export default function rootReducer(state = initialState, action) {
     switch (action.type) {
 
         case 'GET_ALL_RECIPES':
-            if (state.allRecipes.length === 0) {
-                return {
-                    ...state,
-                    recipes: action.payload,
-                    allRecipes: action.payload,
-                }
-            }
-            else {
-                return {
-                    ...state,
-                    recipes: action.payload,
-                }
+            return {
+                ...state,
+                recipes: action.payload,
+                allRecipes: action.payload,
             }
 
         case 'GET_RECIPE_BY_ID':

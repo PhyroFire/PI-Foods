@@ -34,8 +34,6 @@ export default function Detail() {
         navigate("/home");
     }
 
-    var idStep = 1
-
     return (
         <div >
 
@@ -72,10 +70,10 @@ export default function Detail() {
             <div>
                 <h3>Steps</h3>
                 {
-                    recipe.step_by_step && recipe.step_by_step.map(step => {
+                    recipe.step_by_step && recipe.step_by_step.map((step, index) => {
                         return (
                             <div key={step}>
-                                <p>Step N° {idStep++}</p>
+                                <p>Step N°{index + 1}</p>
                                 <p>{step}</p>
                             </div>
                         )

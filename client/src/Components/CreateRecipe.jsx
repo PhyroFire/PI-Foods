@@ -9,6 +9,8 @@ export default function CreateRecipe() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const diets = useSelector(state => state.diets)
+    const [errors, setErrors] = useState({ first: true })
+
 
     const [steps, setSteps] = useState("") // STRING QUE SE MODIFICA CON EL INPUT STEP PARA SER AGREGADO AL ESTADO "INPUT" AL APRETAR BUTON ADDSTEP
 
@@ -21,6 +23,26 @@ export default function CreateRecipe() {
         img: "",
     })
 
+    const validations = (input) => { // VARIABLE PARA GUARDAR UN MENSAJE EN CASO DE FALTANTES DEL INPUT
+        let errors = {}
+        if (!input.name) {
+            errors.name = "Recipe name required-"
+        }
+        else if (input.name?.trim().length < 3) { //el .trim() saca los espacios del inicio y el fin de la palabra
+            errors.name = "Recipe name must be at least 3 characters"
+        }
+        else if ((/[^a-zA-Z0-9 ]/.test(input.name))) { //validacion para que el name no pueda contener caracteres especiales
+            errors.name = "Recipe name cannot contain special characters"
+        }
+        if (input.diets.length === 0) {
+            errors.diets = "Select at least one DIET for your recipe"
+        }
+        if (input.step_by_step.length === 0) {
+            errors.step_by_step = "Add at least one step for your recipe"
+        }
+        return errors
+    }
+
     useEffect(() => {
         dispatch(getAllDiets())
     }, [])
@@ -32,6 +54,10 @@ export default function CreateRecipe() {
             ...input,
             [event.target.name]: event.target.value
         })
+        setErrors(validations({
+            ...input,
+            [event.target.name]: event.target.value
+        }))
     }
 
     function handleSelectDiet(event) {
@@ -43,6 +69,10 @@ export default function CreateRecipe() {
                     ...input,
                     diets: [...input.diets, event.target.value]
                 })
+                setErrors(validations({
+                    ...input,
+                    diets: [...input.diets, event.target.value]
+                }))
             }
         }
     }
@@ -54,6 +84,10 @@ export default function CreateRecipe() {
             ...input,
             diets: arrayFiltrado
         })
+        setErrors(validations({
+            ...input,
+            diets: arrayFiltrado
+        }))
     }
 
     function handleStep(event) {
@@ -70,6 +104,10 @@ export default function CreateRecipe() {
                 ...input,
                 step_by_step: [...input.step_by_step, steps]
             })
+            setErrors(validations({
+                ...input,
+                step_by_step: [...input.step_by_step, steps]
+            }))
         }
         document.getElementById("STEP").value = ""
         setSteps("")
@@ -82,6 +120,10 @@ export default function CreateRecipe() {
             ...input,
             step_by_step: arrayFiltrado
         })
+        setErrors(validations({
+            ...input,
+            step_by_step: arrayFiltrado
+        }))
     }
 
     function handleSubmit(event) {
@@ -135,12 +177,9 @@ export default function CreateRecipe() {
                         placeholder="Your recipe name..."
                         onChange={(event) => handleInput(event)}
                     />
-                    {/* {
-                        input.name && input.name !== "" ?
-                            <></>
-                            :
-                            <p>Must have a name</p>
-                    } */}
+                    {
+                        !errors.name ? null : <span>{errors.name}</span>
+                    }
                 </div>
 
                 <div className="Label">
@@ -190,6 +229,9 @@ export default function CreateRecipe() {
                             })
                         }
                     </select>
+                    {
+                        !errors.diets ? null : <span>{errors.diets}</span>
+                    }
                     <ul>
                         {
                             input.diets.map(diet => {
@@ -220,6 +262,9 @@ export default function CreateRecipe() {
                                 </div>
                             )
                         })
+                    }
+                    {
+                        !errors.step_by_step ? null : <span>{errors.step_by_step}</span>
                     }
                 </div>
 
