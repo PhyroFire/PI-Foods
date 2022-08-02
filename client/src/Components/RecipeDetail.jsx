@@ -30,67 +30,73 @@ export default function Detail() {
         navigate(`/home`);
     }
 
-    function handleDeleteRecipe(event){
+    function handleDeleteRecipe(event) {
         event.preventDefault()
         dispatch(deleteRecipe(recipe.id))
         navigate("/home");
     }
-    
-    return (
-        <div >
 
-            <div className="RecipeDetail">
-                <h2>{recipe.name}</h2>
+    return (
+        <div className="RecipeDetail">
+            <div id="dataRecipe">
+                <h1>{recipe.name}</h1>
 
                 <img src={recipe.img} alt={recipe.name} />
 
-                <h3>Recipe ID: {recipe.id}</h3>
+                <h2>Recipe ID: </h2>
+                <p>{recipe.id}</p>
 
-                <h3>Summary: </h3>
+                <h2>Health Score: </h2>
+                <h1>{recipe.health_score}</h1>
+
+                <h2>Summary: </h2>
                 <p dangerouslySetInnerHTML={{ __html: recipe.summary }} />
 
-                <p>Health Score: {recipe.health_score}</p>
-
             </div>
 
-            <div >
-                <h3>Diet type: </h3>
-                {
-                    recipe.diets && recipe.diets.map(diet => {
-                        return (
-                            recipe.myRecipe === true ?
-                                <div key={diet.id}>
-                                    <p>{diet.name}</p>
-                                    <button value={diet.id} onClick={(event) => { if (window.confirm(`Are you sure to delete ${diet.name} from diets?`)) handleDeleteDiet(event) }}>Delete Diet</button>
-                                </div>
-                                :
-                                <p key={diet}>{diet}</p>
-                        )
-                    })
-                }
-            </div>
-            <div>
-                <h3>Steps</h3>
-                {
-                    recipe.step_by_step && recipe.step_by_step.map((step, index) => {
-                        return (
-                            <div key={step}>
-                                <p>Step N°{index + 1}</p>
-                                <p>{step}</p>
-                            </div>
-                        )
-                    })
-                }
-            </div>
 
-            {
-                recipe.myRecipe &&
-                <div>
-                    <button onClick={(event)=>{if(window.confirm("Are you sure to delete this recipe ?"))handleDeleteRecipe(event)}}>Delete Recipe</button>
+            <div id="diet_step">
+                <div >
+                    <h2>Diet type: </h2>
+                    {
+                        recipe.diets && recipe.diets.map(diet => {
+                            return (
+                                recipe.myRecipe === true ?
+                                    <div key={diet.id}>
+                                        <p>{diet.name}</p>
+                                        <button value={diet.id} onClick={(event) => { if (window.confirm(`Are you sure to delete ${diet.name} from diets?`)) handleDeleteDiet(event) }}>Delete Diet</button>
+                                    </div>
+                                    :
+                                    <p key={diet}>{diet}</p>
+                            )
+                        })
+                    }
                 </div>
-            }
-
-            <Link to='/home'><button id="backToHome">Back to Home</button></Link>
-        </div >
+                <div>
+                    <h2>Steps</h2>
+                    {
+                        recipe.step_by_step && recipe.step_by_step.map((step, index) => {
+                            return (
+                                <div key={step}>
+                                    <h3>Step N°{index + 1}</h3>
+                                    <p>{step}</p>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            </div>
+            <nav id="detailNav">
+                <div>
+                {
+                    recipe.myRecipe &&
+                    <div>
+                        <button onClick={(event) => { if (window.confirm("Are you sure to delete this recipe ?")) handleDeleteRecipe(event) }}>Delete Recipe</button>
+                    </div>
+                }
+                </div>
+                <Link to='/home'><button id="backToHome">Back to Home</button></Link>
+            </nav>
+        </div>
     )
 }

@@ -1,17 +1,27 @@
-.RecipeDetail{
+.RecipeDetail {
     color: rgb(0, 0, 0);
-
+    background-image: url('../Imagenes/Create.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     display: flex;
-    align-items: center;
-    height: 1060px;
+    min-width: 100%;
+    min-height: 1060px;
+}
+
+.RecipeDetail p {
+    font-size: 20px;
+  
+}
+
+.RecipeDetail h2 {
+    color: black;
+    font-size: 33px;
 }
 
 .RecipeDetail img {
-    width: 500px;
-    height: 300px;
+    max-width: 700px;
+    max-height: 1000px;
 }
 
 .RecipeDetail h1 {
@@ -19,4 +29,27 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 40px;
+}
+
+#dataRecipe {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+}
+
+#diet_step {
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+}
+
+#detailNav {
+    position: fixed;
+    padding: 40px;
+    top: 0;
+    right: 0;
+}
+
+#detailNav button {
+    padding: 40px;
 }

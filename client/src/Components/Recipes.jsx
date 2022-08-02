@@ -25,7 +25,7 @@ export default function Recipes({ currentRecipes }) {
                         currentRecipes.map(recipe => {
                             return (
                                 <div key={recipe.id} >
-                                    <Card name={recipe.name} id={recipe.id} image={recipe.img} diets={recipe.diets} />
+                                    <Card name={recipe.name} id={recipe.id} image={recipe.img} diets={recipe.diets} health_score={recipe.health_score}/>
                                 </div>
                             )
                         })
