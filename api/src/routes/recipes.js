@@ -11,9 +11,7 @@ const getRecipesApi = async () => {
         return {
             id: recipe.id,
             name: recipe.title,
-            //summary: recipe.summary,
             health_score: recipe.healthScore,
-            //step_by_step: recipe.analyzedInstructions[0] ? recipe.analyzedInstructions[0].steps.map(step => step.step) : ["No steps"],
             img: recipe.image,
             diets: recipe.diets,
         }

@@ -1,0 +1,89 @@
+.CreateRecipe {
+    background-image: url('../Imagenes/Create.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-width: 100%;
+    min-height: 1060px;
+}
+
+.CreateRecipe h1 {
+    font-size: 50px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    margin: 10px;
+}
+
+.CreateRecipe img {
+    width: 250px;
+    height: 280px;
+    display: flex;
+}
+
+.CreateRecipe span{
+    font-size: 25px;
+}
+
+.Select button {
+    padding: 10px 10px;
+}
+
+.Form {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.Label {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.Select {
+    margin: 10px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.CreateRecipe li {
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    font-size: 20px;
+    list-style: none;
+    padding: 10px;
+    border-style: groove;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.CreateRecipe ul {
+    display: flex;
+    margin: 5px;
+    flex-wrap: wrap;
+}
+
+.Select button {
+    margin-left: 10px;
+}
+
+.CreateRecipe label {
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+
+}
+
+#submit {
+    padding: 20px 80px;
+    margin: 20px;
+}
+
+#Summary {
+    border-radius: 10px;
+}
+
+#imagenFood {
+    float: right;
+    margin-top: 300px;
+    margin-right: 200px;
+}

@@ -5,6 +5,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 
+import '../Style/CSS/RecipeDetail.css'
+
 export default function Detail() {
 
 
@@ -37,10 +39,10 @@ export default function Detail() {
     return (
         <div >
 
-            <div >
+            <div className="RecipeDetail">
                 <h2>{recipe.name}</h2>
 
-                <img src={recipe.image} alt={recipe.name} />
+                <img src={recipe.img} alt={recipe.name} />
 
                 <h3>Recipe ID: {recipe.id}</h3>
 

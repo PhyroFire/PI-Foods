@@ -1,0 +1,32 @@
+.card {
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #d4ad00;
+    min-height: 400px;
+    margin: 15px;
+    text-align: center;
+    display: flex;
+}
+
+.card:hover{
+    background-size: cover;
+    background-position: center;
+    transform: translateY(-15px);
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.7);
+ }
+
+.card a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.card a:visited {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+#diets{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}

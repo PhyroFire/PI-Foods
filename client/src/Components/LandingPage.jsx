@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import '../Style/CSS/LandingPage.css'
+import video from '../Style/Videos/VideoIntro.mp4'
 
 export default function LandingPage() {
     return (
@@ -7,6 +9,7 @@ export default function LandingPage() {
 
             <div className="landing">
 
+                <video autoPlay="autoplay" muted type={"video/mp4"} preload="auto" loop src={video}></video>
                 <Link to='/home'>
                     <h1>Henry Food's Proyect</h1>
                 </Link>

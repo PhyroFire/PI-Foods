@@ -1,0 +1,22 @@
+.About{
+    background-image: url('../Imagenes/About.jpg');
+    background-size: cover;
+    background-position: center;
+    min-width: 100%;
+    min-height: 1060px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.About h1, h2 {
+    color: rgb(255, 238, 0);
+}
+
+.About p {
+    color: rgb(184, 169, 88);
+}

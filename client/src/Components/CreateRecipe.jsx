@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { postRecipe, getAllDiets } from "../Actions/Index";
+import '../Style/CSS/CreateRecipe.css'
+import noImage from '../Style/Imagenes/noImage.png'
 
 export default function CreateRecipe() {
 
@@ -20,7 +22,7 @@ export default function CreateRecipe() {
         health_score: 0,
         step_by_step: steps,
         diets: [],
-        img: "",
+        img: noImage,
     })
 
     const validations = (input) => { // VARIABLE PARA GUARDAR UN MENSAJE EN CASO DE FALTANTES DEL INPUT
@@ -144,7 +146,7 @@ export default function CreateRecipe() {
         else if (input.diets.length === 0) {
             return alert("Recipes must belong to a DIET type")
         }
-        else if (input.img === "") {
+        else if (input.img === noImage) {
             return alert("Recipe IMAGE required")
         }
         else {
@@ -163,8 +165,9 @@ export default function CreateRecipe() {
     }
 
     return (
-        <div >
+        <div className="CreateRecipe">
             <h1>Create your own recipe !</h1>
+            <img id="imagenFood" alt={input.img} src={input.img}></img>
             <form onSubmit={(event) => handleSubmit(event)} className="Form">
 
                 <div className="Label">
@@ -243,7 +246,7 @@ export default function CreateRecipe() {
                     </ul>
                 </div>
 
-                <div>
+                <div className="Label">
                     <label>Steps for recipe:</label>
                     <input
                         id="STEP"

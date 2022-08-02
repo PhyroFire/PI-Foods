@@ -1,0 +1,22 @@
+.RecipeDetail{
+    color: rgb(0, 0, 0);
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    height: 1060px;
+}
+
+.RecipeDetail img {
+    width: 500px;
+    height: 300px;
+}
+
+.RecipeDetail h1 {
+    background: -webkit-linear-gradient(rgb(167, 167, 167), rgb(0, 50, 214));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 40px;
+}

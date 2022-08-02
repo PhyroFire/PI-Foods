@@ -1,4 +1,6 @@
 import React from "react";
+import '../Style/CSS/Paginado.css'
+
 
 export default function Paginado({ recipesXPage, allRecipes, pages }) {
 

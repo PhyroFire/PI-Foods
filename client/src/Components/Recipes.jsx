@@ -1,6 +1,9 @@
 import React from "react"
 import Card from "../Components/Card"
 
+import Loading from '../Style/Imagenes/Loading.gif'
+import NotFound from '../Style/Imagenes/NotFound.gif'
+
 import { getAllRecipes } from "../Actions/Index";
 import { useDispatch } from "react-redux";
 
@@ -28,12 +31,12 @@ export default function Recipes({ currentRecipes }) {
                         })
                         :
                         <button onClick={event => handleButton(event)}>
-                            NOT FOUND
+                             <img id="notFound" src={NotFound} alt="Not Found" />
                         </button>
                     :
                     <div>
                         <h5>Loading...</h5>
-
+                        <img src={Loading} alt="Cargando" />
                     </div>
             }
         </div>

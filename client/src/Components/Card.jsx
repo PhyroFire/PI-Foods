@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import '../Style/CSS/Card.css'
 
 export default function Card({ name, id, image, diets }) {
 
@@ -7,16 +8,18 @@ export default function Card({ name, id, image, diets }) {
         <div className="card">
             <Link to={'/recipe/' + id}>
                 <h3>{name}</h3>
+                <div id="diets">
                 {
                     diets.map(diet => {
                         return (
                             typeof diet === "string" ?
-                                <p key={diet}>{diet}</p>
+                                <span key={diet}>{diet}</span>
                                 :
-                                <p key={diet.name}>{diet.name}</p>
+                                <span key={diet.name}>{diet.name}</span>
                         )
                     })
                 }
+                </div>
                 <img src={image} alt={name} width="300" height="150" />
             </Link>
         </div>
