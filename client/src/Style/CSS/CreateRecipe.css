@@ -87,3 +87,12 @@
     margin-top: 300px;
     margin-right: 200px;
 }
+
+#paso {
+    display: flex;
+    align-items: center;
+}
+
+#step_input {
+    display: flex;
+}

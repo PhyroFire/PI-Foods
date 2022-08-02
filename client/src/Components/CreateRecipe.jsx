@@ -246,8 +246,9 @@ export default function CreateRecipe() {
                     </ul>
                 </div>
 
-                <div className="Label">
+                <div>
                     <label>Steps for recipe:</label>
+                    <div id="step_input">
                     <input
                         id="STEP"
                         type='text'
@@ -256,10 +257,11 @@ export default function CreateRecipe() {
                         placeholder="Step..."
                         onChange={(event) => handleStep(event)} />
                     <button onClick={(event) => addStep(event)}>Add step</button>
+                    </div>
                     {
                         input.step_by_step && input.step_by_step.map(paso => {
                             return (
-                                <div key={paso}>
+                                <div key={paso} id="paso" >
                                     <li>{paso}</li>
                                     <button value={paso} onClick={(event) => deleteStep(event)}>Delete step</button>
                                 </div>
