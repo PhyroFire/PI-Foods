@@ -158,7 +158,7 @@ export default function CreateRecipe() {
                 health_score: 0,
                 step_by_step: steps,
                 diets: [],
-                img: "",
+                img: noImage,
             })
             navigate("/home");
         }
