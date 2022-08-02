@@ -35,6 +35,7 @@
     display: flex;
     flex-direction: column;
     max-width: 700px;
+    margin-left: 30px;
 }
 
 #diet_step {
@@ -44,10 +45,14 @@
 }
 
 #detailNav {
-    position: fixed;
+    position: absolute;
     padding: 40px;
-    top: 0;
-    right: 0;
+    top: 25%;
+    right: 100px;
+}
+
+#detailNav div {
+    margin: 100px 0px;
 }
 
 #detailNav button {
