@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 
 import '../Style/CSS/RecipeDetail.css'
+import Loading from '../Style/Imagenes/Loading.gif'
 
 export default function Detail() {
 
@@ -17,7 +18,7 @@ export default function Detail() {
 
     useEffect(() => {
         dispatch(getRecipeById(id))
-    }, [])
+    }, [dispatch])
 
     function handleDeleteDiet(event) {
 
@@ -36,67 +37,79 @@ export default function Detail() {
         navigate("/home");
     }
 
+    console.log(recipe)
     return (
-        <div className="RecipeDetail">
-            <div id="dataRecipe">
-                <h1>{recipe.name}</h1>
+        <div >
+            {
+                recipe.id ?
+                    <div className="RecipeDetail">
+                        <div id="dataRecipe">
+                            <h1>{recipe.name}</h1>
 
-                <img src={recipe.img} alt={recipe.name} />
+                            <img src={recipe.img} alt={recipe.name} />
 
-                <h2>Recipe ID: </h2>
-                <p>{recipe.id}</p>
+                            <h2>Recipe ID: </h2>
+                            <p>{recipe.id}</p>
 
-                <h2>Health Score: </h2>
-                <h1>{recipe.health_score}</h1>
+                            <h2>Health Score: </h2>
+                            <h1>{recipe.health_score}</h1>
 
-                <h2>Summary: </h2>
-                <p dangerouslySetInnerHTML={{ __html: recipe.summary }} />
+                            <h2>Summary: </h2>
+                            <p dangerouslySetInnerHTML={{ __html: recipe.summary }} />
 
-            </div>
+                        </div>
 
 
-            <div id="diet_step">
-                <div >
-                    <h2>Diet type: </h2>
-                    {
-                        recipe.diets && recipe.diets.map(diet => {
-                            return (
-                                recipe.myRecipe === true ?
-                                    <div key={diet.id}>
-                                        <p>{diet.name}</p>
-                                        <button value={diet.id} onClick={(event) => { if (window.confirm(`Are you sure to delete ${diet.name} from diets?`)) handleDeleteDiet(event) }}>Delete Diet</button>
+                        <div id="diet_step">
+                            <div >
+                                <h2>Diet type: </h2>
+                                {
+                                    recipe.diets && recipe.diets.map(diet => {
+                                        return (
+                                            recipe.myRecipe === true ?
+                                                <div key={diet.id}>
+                                                    <p>{diet.name}</p>
+                                                    <button value={diet.id} onClick={(event) => { if (window.confirm(`Are you sure to delete ${diet.name} from diets?`)) handleDeleteDiet(event) }}>Delete Diet</button>
+                                                </div>
+                                                :
+                                                <p key={diet}>{diet}</p>
+                                        )
+                                    })
+                                }
+                            </div>
+                            <div>
+                                <h2>Steps</h2>
+                                {
+                                    recipe.step_by_step && recipe.step_by_step.map((step, index) => {
+                                        return (
+                                            <div key={step}>
+                                                <h3>Step N°{index + 1}</h3>
+                                                <p>{step}</p>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </div>
+                        <nav id="detailNav">
+                            <div>
+                                {
+                                    recipe.myRecipe &&
+                                    <div>
+                                        <button onClick={(event) => { if (window.confirm("Are you sure to delete this recipe ?")) handleDeleteRecipe(event) }}>Delete Recipe</button>
                                     </div>
-                                    :
-                                    <p key={diet}>{diet}</p>
-                            )
-                        })
-                    }
-                </div>
-                <div>
-                    <h2>Steps</h2>
-                    {
-                        recipe.step_by_step && recipe.step_by_step.map((step, index) => {
-                            return (
-                                <div key={step}>
-                                    <h3>Step N°{index + 1}</h3>
-                                    <p>{step}</p>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-            </div>
-            <nav id="detailNav">
-                <div>
-                {
-                    recipe.myRecipe &&
-                    <div>
-                        <button onClick={(event) => { if (window.confirm("Are you sure to delete this recipe ?")) handleDeleteRecipe(event) }}>Delete Recipe</button>
+                                }
+                            </div>
+                            <Link to='/home'><button id="backToHome">Back to Home</button></Link>
+
+                        </nav>
                     </div>
-                }
-                </div>
-                <Link to='/home'><button id="backToHome">Back to Home</button></Link>
-            </nav>
+                    :
+                    <div id="loading_detail">
+                        <h1>Loading...</h1>
+                        <img src={Loading} alt="Cargando" />
+                    </div>
+            }
         </div>
     )
 }

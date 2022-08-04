@@ -86,3 +86,9 @@ export function orderByScore(order){
         payload : order
     }
 }
+
+export function vaciarRecipe(){
+    return {
+        type: 'EMPTY_RECIPE_STATE',
+    }
+}

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { getRecipeByName } from "../Actions/Index";
 
 
-export default function SearchBar() {
+export default function SearchBar({pages}) {
 
     const dispatch = useDispatch()
     const [name, setName] = useState("")
@@ -17,6 +17,7 @@ export default function SearchBar() {
         event.preventDefault()
         dispatch( getRecipeByName(name))
         setName("")
+        pages(1)
     }
 
     function handleReset() {

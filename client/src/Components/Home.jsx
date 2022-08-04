@@ -1,4 +1,4 @@
-import { getAllRecipes } from "../Actions/Index";
+import { getAllRecipes, vaciarRecipe } from "../Actions/Index";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -29,10 +29,9 @@ export default function Home() {
     const [orden, setOrden] = useState("") // ESTADO QUE SOLO SE USA PARA VOLVER A RENDERIZAR EL HOME AL IMPLEMENTAR ORDENAMIENTOS QUE NO MODIFIQUEN EL LENGTH DE RECIPES
 
     useEffect(() => {
-        if (!recipes.length) {
-            dispatch(getAllRecipes())
-        }
-    }, [])
+        dispatch(getAllRecipes())
+        dispatch(vaciarRecipe())
+    }, [dispatch])
 
     return (
         <div className="Home">
@@ -43,7 +42,7 @@ export default function Home() {
 
             <nav className="MainNav">
 
-                <SearchBar />
+                <SearchBar pages={setCurrentPage}/>
 
                 <Link to={'/about'}><button>ABOUT THIS PAGE</button></Link>
 
@@ -67,7 +66,7 @@ export default function Home() {
 
             <Paginado
                 recipesXPage={recipesXPage}
-                allRecipes={recipes.length}
+                allRecipes={recipes}
                 pages={setCurrentPage}
             />
 

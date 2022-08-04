@@ -66,13 +66,11 @@ export default function rootReducer(state = initialState, action) {
     switch (action.type) {
 
         case 'GET_ALL_RECIPES':
-            if( state.recipes.length === 0){
                 return {
                     ...state,
                     recipes: action.payload,
                     allRecipes: action.payload,
-                }
-            }
+                }  
             
         case 'GET_RECIPE_BY_ID':
             return {
@@ -81,7 +79,7 @@ export default function rootReducer(state = initialState, action) {
             }
 
         case 'GET_RECIPES_BY_NAME':
-            if (action.payload.length !== 0) {
+            if (typeof action.payload === "object") { // ACA LLEGA UN STRING SI NO ENCUNETRA. VER COMO ARREGLO
                 return {
                     ...state,
                     recipes: action.payload
@@ -111,7 +109,7 @@ export default function rootReducer(state = initialState, action) {
             const recipeDiets = action.payload === 'All' ? allRecipes : allRecipes.filter(recipe => recipe.diets.find(diet => diet === action.payload.toLowerCase() || diet.name === action.payload))
             return {
                 ...state,
-                recipes: recipeDiets
+                recipes: recipeDiets.length === 0 ? "NO RECIPES FOUND" : recipeDiets
             }
 
         case 'ORDER_BY_NAME':
@@ -126,6 +124,12 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 recipes: scoreRecipes
+            }
+
+        case 'EMPTY_RECIPE_STATE':
+            return {
+                ...state,
+                recipe: []
             }
 
         default: return state

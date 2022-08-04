@@ -4,10 +4,20 @@ import '../Style/CSS/Paginado.css'
 
 export default function Paginado({ recipesXPage, allRecipes, pages }) {
 
+    let numberOfRecipes = arrayOrString(allRecipes)
     let pageNumbers = []
 
-    for (let index = 1; index <= Math.ceil(allRecipes / recipesXPage); index++) {
+    for (let index = 1; index <= Math.ceil(numberOfRecipes / recipesXPage); index++) {
         pageNumbers.push(index)
+    }
+
+    function arrayOrString(allRecipes){
+        if(typeof allRecipes === "object"){
+            return allRecipes.length
+        }
+        else{
+            return 1
+        }
     }
 
     return (

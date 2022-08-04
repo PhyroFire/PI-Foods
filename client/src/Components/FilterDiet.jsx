@@ -10,7 +10,7 @@ export default function FilterDiet({pages}) {
 
     useEffect(() => {
         dispatch(getAllDiets())
-    }, [])
+    }, [dispatch])
 
     function handleDietFilter(event) {
         dispatch(getRecipesByDiet(event.target.value))

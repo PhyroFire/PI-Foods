@@ -47,7 +47,7 @@ export default function CreateRecipe() {
 
     useEffect(() => {
         dispatch(getAllDiets())
-    }, [])
+    }, [dispatch])
 
 
     function handleInput(event) {

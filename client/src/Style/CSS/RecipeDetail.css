@@ -44,17 +44,33 @@
     margin: 100px;
 }
 
-#detailNav {
-    position: absolute;
-    padding: 40px;
-    top: 25%;
-    right: 100px;
-}
-
 #detailNav div {
     margin: 100px 0px;
 }
 
 #detailNav button {
     padding: 40px;
+}
+
+#loading_detail{
+    color: rgb(0, 0, 0);
+    background-image: url('../Imagenes/Create.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-width: 100%;
+    min-height: 1060px;
+    display: flex;
+    flex-direction: column;
+}
+
+#loading_detail h1 {
+    font-size: 100px;
+    align-self: center;
+}
+
+#loading_detail img {
+    max-height: 200px;
+    max-width: 200px;
+    align-self: center;
 }
