@@ -33,6 +33,17 @@ router.post('/', async (req, res, next) => {
     }
 })
 
+// router.post('/', (req, res, next) => {
+//     let datos = req.body
+//     try {
+//         postGameDb(datos.name, datos.summary, datos.health_score,
+//             datos.step_by_step, datos.img, datos.diets)
+//             .then(res.json("receta creada"))
+//     } catch (error) {
+//         next(error)
+//     }
+// })
+
 router.delete('/:id', (req, res, next) => {
     try {
         const { id } = req.params
