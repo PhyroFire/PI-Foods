@@ -68,6 +68,7 @@ export default function Home() {
                 recipesXPage={recipesXPage}
                 allRecipes={recipes}
                 pages={setCurrentPage}
+                actual={currentPage}
             />
 
             <Recipes currentRecipes={currentRecipes} />

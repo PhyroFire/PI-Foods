@@ -2,7 +2,7 @@ import React from "react";
 import '../Style/CSS/Paginado.css'
 
 
-export default function Paginado({ recipesXPage, allRecipes, pages }) {
+export default function Paginado({ recipesXPage, allRecipes, pages, actual }) {
 
     let numberOfRecipes = arrayOrString(allRecipes)
     let pageNumbers = []
@@ -17,6 +17,19 @@ export default function Paginado({ recipesXPage, allRecipes, pages }) {
         }
         else{
             return 1
+        }
+    }
+    
+    function handlePaginado(orden){
+        if(orden === "prev"){
+            if( (actual - 1) > 0 ){
+                pages(actual - 1)
+            }
+        }
+        if(orden === "next"){
+            if((actual +1 ) <= pageNumbers.length ){
+                pages(actual + 1)
+            }
         }
     }
 
@@ -34,6 +47,12 @@ export default function Paginado({ recipesXPage, allRecipes, pages }) {
                     })
                 }
             </ul>
+            {
+                <div id="prev_next">
+                    <button onClick={() => handlePaginado("prev")}>PREVIUS</button>
+                    <button onClick={() => handlePaginado("next")}>NEXT</button>
+                </div>
+            }
         </nav>
     )
 }

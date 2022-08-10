@@ -9,3 +9,8 @@
     border-radius: 77% 23% 80% 20% / 80% 21% 79% 20% ;
 }
 
+
+#prev_next {
+    display: flex;
+    justify-content: space-evenly;
+}
