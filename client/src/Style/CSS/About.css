@@ -20,3 +20,8 @@
 .About p {
     color: rgb(184, 169, 88);
 }
+
+.About img {
+    width: 360px;
+    height: 430px;
+}
